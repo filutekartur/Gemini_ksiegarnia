@@ -4,3 +4,5 @@ class Library():
     def get_books(self):
         for book in self.books:
             book.desc()
+    def set_book(self,book):
+        self.books.append(book)

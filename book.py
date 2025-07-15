@@ -6,4 +6,4 @@ class Book():
         self.availability=availability
 
     def desc(self):
-        print(f"The  {self.title}  book, written by  {self.author}  in  {self.year}  is {"available" if self.availability else "unavailbable"}")
+        print(f"The {self.title} book, written by {self.author} in {self.year} is {"available" if self.availability else "unavailbable"}")

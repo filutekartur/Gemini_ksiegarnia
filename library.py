@@ -16,3 +16,15 @@ class Library():
         book = Book(title,author,year)
         self.set_book(book)
         print(f"Book {title} added to {self.name}")
+    def search(self):
+        query = input("Podaj tytuł książki który chcesz znaleźć")
+        books = []
+        for book in self.books:
+            if query.lower() in book.title.lower():
+                books.append(book)
+        if books:
+            print("Found :")
+            for book in books:
+                book.desc()
+        else:
+            print("Not found.")

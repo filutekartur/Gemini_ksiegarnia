@@ -35,5 +35,7 @@ class Library():
     def borrow_return_book(self):
         books = self.search()
         if books:
-            choice = input("Which book do you mean? ")
-            action = input("what do you want to do?\n B = Borrow \n R = Return")
+            choice = input("Which book do you mean, pick number? ")
+            action = input("what do you want to do?\nB = Borrow\nR = Return\n")
+            if action == "B" and books[choice-1].availability == True:
+                pass

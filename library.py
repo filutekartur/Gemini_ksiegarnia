@@ -24,8 +24,16 @@ class Library():
                 books.append(book)
         if books:
             print("Found :")
+            i=1
             for book in books:
+                print(f"{i}. ",end='')
                 book.desc()
+                i+=1
         else:
             print("Not found.")
         return books
+    def borrow_return_book(self):
+        books = self.search()
+        if books:
+            choice = input("Which book do you mean? ")
+            action = input("what do you want to do?\n B = Borrow \n R = Return")

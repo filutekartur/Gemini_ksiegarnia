@@ -49,5 +49,9 @@ class Library():
         if books:
             choice = input("Which book do you mean, pick number? ")
             action = input("what do you want to do?\nB = Borrow\nR = Return\n")
-            if action == "B" and books[choice-1].availability == True:
-                pass
+            if action == "B":
+                self.borrow_book(books[choice-1])
+            elif action == "R":
+                self.return_book(books[choice-1])
+            else:
+                print("Wrong action!")

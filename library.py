@@ -32,6 +32,12 @@ class Library():
         else:
             print("Not found.")
         return books
+    def borrow_book(self,book):
+        if book.availability:
+            book.availability = False
+            print(f"{book.title}, borrowed.")
+        else:
+            print(f"{book.title}, is already borrowed")
     def borrow_return_book(self):
         books = self.search()
         if books:

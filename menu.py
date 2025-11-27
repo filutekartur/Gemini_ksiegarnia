@@ -8,16 +8,24 @@ def menu(library):
         print("3. Search book: ")
         print("4. Borrow/Return book: ")
         print("5. Exit: ")
-        choice = int(input(""))
+        while True:
+            try:
+                choice = int(input(""))
+                if choice <1 or choice >5:
+                    raise ValueError
+            except ValueError:
+                print("Pick correct number")
+            else:
+                break
         if choice==1:
             library.get_books()
-        if choice==2:
+        elif choice==2:
             library.new_book()
-        if choice==3:
+        elif choice==3:
             library.search()
-        if choice==4:
+        elif choice==4:
             library.borrow_return_book()
-        if choice==5:
+        elif choice==5:
             break
         input("Press enter to continue....")
         os.system('cls')

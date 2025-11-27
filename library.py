@@ -55,7 +55,13 @@ class Library():
         if books:
             choice = 0
             while choice > len(books) or choice < 1:
-                choice = int(input("Which book do you mean, pick number? "))
+                while True:
+                    try:
+                        choice = int(input("Which book do you mean, pick number? "))
+                    except ValueError:
+                        print("Pick number!")
+                    else:
+                        break
             while True:
                 action = input("what do you want to do?\nB = Borrow\nR = Return\n")
                 if action == "B":

@@ -1,7 +1,7 @@
 from book import Book
 from library import Library
 from menu import menu
-lib = Library("Biblioteka")
+lib = Library("Library")
 a = Book("Miney","He",2000,True)
 b= Book("Yoursy","Me",1999,False)
 lib.set_book(a)

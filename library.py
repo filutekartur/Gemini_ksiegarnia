@@ -12,7 +12,13 @@ class Library():
     def new_book(self):
         title = input("Podaj tytuł: ")
         author = input("Podaj autora: ")
-        year = input("Podaj rok wydania książki: ")
+        while True:
+            try:
+                year = int(input("Podaj rok wydania książki: "))
+            except ValueError as ve:
+                print(f"Podaj liczbe.")
+            else:
+                break
         book = Book(title,author,year)
         self.set_book(book)
         print(f"Book {title} added to {self.name}")

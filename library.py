@@ -10,20 +10,20 @@ class Library():
     def set_book(self,book):
         self.books.append(book)
     def new_book(self):
-        title = input("Podaj tytuł: ")
-        author = input("Podaj autora: ")
+        title = input("Enter title: ")
+        author = input("Enter author: ")
         while True:
             try:
-                year = int(input("Podaj rok wydania książki: "))
+                year = int(input("Enter release year: "))
             except ValueError as ve:
-                print(f"Podaj liczbe.")
+                print(f"Enter correct year.")
             else:
                 break
         book = Book(title,author,year)
         self.set_book(book)
         print(f"Book {title} added to {self.name}")
     def search(self):
-        query = input("Podaj tytuł książki który chcesz znaleźć: ")
+        query = input("Enter title which you want to find: ")
         books = []
         for book in self.books:
             if query.lower() in book.title.lower():

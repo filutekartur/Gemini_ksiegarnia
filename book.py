@@ -5,7 +5,5 @@ class Book():
         self.year=year
         self.availability=availability
 
-    # def desc(self):
-    #     print(f"The {self.title} book, written by {self.author} in {self.year} is {"available" if self.availability else "unavailable"}")
     def desc(self):
         return f"The {self.title} book, written by {self.author} in {self.year} is {"available" if self.availability else "unavailable"}"

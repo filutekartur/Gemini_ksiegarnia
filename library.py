@@ -2,13 +2,13 @@ from book import Book
 class Library():
     def __init__(self,name):
         self.name = name
-        self.books = []
+        self.books = {}
     def get_books(self):
         print(f"\nBooks of {self.name}:\n")
-        for book in self.books:
-            book.desc()
+        for id,book in self.books.items():
+            print(f"{id}. {book.desc()}")
     def set_book(self,book):
-        self.books.append(book)
+        self.books[len(self.books)+1]=book
     def new_book(self):
         title = input("Enter title: ")
         author = input("Enter author: ")
@@ -25,16 +25,13 @@ class Library():
     def search(self):
         query = input("Enter title which you want to find: ")
         books = []
-        for book in self.books:
+        for id,book in self.books.items():
             if query.lower() in book.title.lower():
-                books.append(book)
+                books.append(id)
         if books:
             print("Found :")
-            i=1
-            for book in books:
-                print(f"{i}. ",end='')
-                book.desc()
-                i+=1
+            for i in books:
+                print(f"{i}. {self.books[id].desc()}")
         else:
             print("Not found.")
         return books

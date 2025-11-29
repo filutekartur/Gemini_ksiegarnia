@@ -36,29 +36,29 @@ class Library():
             print("Not found.")
         return books
     def borrow_book(self,book):
-        if book.availability:
-            book.availability = False
-            print(f"{book.title}, borrowed.")
+        if self.books[book].availability:
+            self.books[book].availability = False
+            print(f"{self.books[book].title}, borrowed.")
         else:
-            print(f"{book.title}, is already borrowed")
+            print(f"{self.books[book].title}, is already borrowed")
     def return_book(self,book):
-        if not book.availability:
-            book.availability = True
-            print(f"{book.title}, returned.")
+        if not self.books[book].availability:
+            self.books[book].availability = True
+            print(f"{self.books[book].title}, returned.")
         else:
-            print(f"{book.title}, is already returned")
+            print(f"{self.books[book].title}, is already returned")
     def borrow_return_book(self):
         books = self.search()
         if books:
-            choice = 0
-            while choice > len(books) or choice < 1:
-                while True:
-                    try:
-                        choice = int(input("Which book do you mean, pick number? "))
-                    except ValueError:
-                        print("Pick number!")
-                    else:
-                        break
+            while True:
+                try:
+                    choice = int(input("Which book do you mean, pick number? "))
+                    if choice <1 or choice > len(books):
+                        raise ValueError
+                except ValueError:
+                    print("Pick correct number!")
+                else:
+                    break
             while True:
                 action = input("what do you want to do?\nB = Borrow\nR = Return\n")
                 if action == "B":

@@ -12,8 +12,11 @@ class Library():
     def set_book(self,book):
         self.books[str(len(self.books)+1)]=book
     def new_book(self):
-        title = input("Enter title: ")
-        author = input("Enter author: ")
+        while True:
+            title = input("Enter title: ")
+            author = input("Enter author: ")
+            if title and author:
+                break
         while True:
             try:
                 year = int(input("Enter release year: "))

@@ -1,14 +1,16 @@
 from book import Book
+import json
 class Library():
-    def __init__(self,name):
+    def __init__(self,name,file):
         self.name = name
         self.books = {}
+        self.file = file
     def get_books(self):
         print(f"\nBooks of {self.name}:\n")
         for id,book in self.books.items():
             print(f"{id}. {book.desc()}")
     def set_book(self,book):
-        self.books[len(self.books)+1]=book
+        self.books[str(len(self.books)+1)]=book
     def new_book(self):
         title = input("Enter title: ")
         author = input("Enter author: ")
@@ -70,3 +72,10 @@ class Library():
                 else:
                     print("Wrong action!")
                     continue
+    def read_file(self):
+        with open(self.file, encoding="utf-8") as f:
+            self.books={k : Book(*l) for k,l in json.loads(f.read()).items()}
+            #tworzy dict z odczytanego pliku, * rozszywa liste na pojedyncze argumenty
+    def write_file(self,data):
+        with open('books1.json', "w",encoding="utf-8") as f:
+            f.write(data)

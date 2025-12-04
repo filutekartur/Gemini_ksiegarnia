@@ -74,8 +74,15 @@ class Library():
                     continue
     def read_file(self):
         with open(self.file, encoding="utf-8") as f:
-            self.books={k : Book(*l) for k,l in json.loads(f.read()).items()}
+            self.books={
+                k : Book(*l) 
+                for k,l in json.loads(f.read()).items()
+            }
             #tworzy dict z odczytanego pliku, * rozszywa liste na pojedyncze argumenty
-    def write_file(self,data):
-        with open('books1.json', "w",encoding="utf-8") as f:
-            f.write(data)
+    def write_file(self):
+        with open(self.file, "w",encoding="utf-8") as f:
+            data={ id : [book.title,book.author,book.year,book.availability] for id,book in self.books.items()}
+            f.write(json.dumps(data,indent=4,ensure_ascii=False))
+
+            # {"1": ["Tajemnice Starego Lasu", "Anna Kowalska", 2018, true],
+            # "1": ["Tajemnice Starego Lasu", "Anna Kowalska", 2018, true]}

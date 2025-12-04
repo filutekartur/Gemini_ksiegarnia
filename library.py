@@ -31,9 +31,9 @@ class Library():
             if query.lower() in book.title.lower():
                 books.append(id)
         if books:
-            print("Found :")
-            for i in books:
-                print(f"{i}. {self.books[id].desc()}")
+            print("Found:")
+            for id in books:
+                print(f"{id}. {self.books[id].desc()}")
         else:
             print("Not found.")
         return books

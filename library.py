@@ -40,6 +40,61 @@ class Library():
         else:
             print("Not found.")
         return books
+    def search(self):
+        books=[]
+        while True:
+            #take a list of action from input
+            option = [x for x in input("Choose search options?\n"
+                                        "T - Title\n"
+                                        "A - Author\n"
+                                        "Y - Release year\n")]
+            #check if any element is diferent than accepted, produce True/Fale list and react if there is not False inside
+            if False not in[x in ["A","T","Y"] for x in option] and option:
+                break
+        for x in option:
+            books=self.find(books,x)
+
+        query = input("Enter title which you want to find: ")
+        books = []
+        for id,book in self.books.items():
+            if query.lower() in book.title.lower():
+                books.append(id)
+        if books:
+            print("Found:")
+            for id in books:
+                print(f"{id}. {self.books[id].desc()}")
+        else:
+            print("Not found.")
+        return books
+    
+    def find(self,books,option):
+        books = books if books else self.books # to jest lista a drugie dictionary 
+        query = input(f"Enter {self.TAY(option)} you want to find: ")
+        for id,book in self.books.items():# tutaj musze szukać po lokalnym books a nie po self
+                if query.lower() in (book.title.lower() if option =="T" else book.author.lower() if option=="A" else book.author.year()):
+                    books.append(id)
+        if option == "T":
+            for id,book in self.books.items():
+                if query.lower() in book.title.lower():
+                    books.append(id)
+        if option == "A":
+            for id,book in self.books.items():
+                if query.lower() in book.title.lower():
+                    books.append(id)
+        if option == "Y":
+            for id,book in self.books.items():
+                if query.lower() in book.title.lower():
+                    books.append(id)
+    def TAY(option):
+        if option=="T":
+            return "Title"
+        if option=="A":
+            return "Author"
+        if option=="Y":
+            return "Year"
+        else:
+            return ""
+    
     def borrow_book(self,book):
         if self.books[book].availability:
             self.books[book].availability = False

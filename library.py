@@ -27,7 +27,7 @@ class Library():
         book = Book(title,author,year)
         self.set_book(book)
         print(f"Book {title} added to {self.name}")
-    def search(self):
+    def search1(self):
         query = input("Enter title which you want to find: ")
         books = []
         for id,book in self.books.items():
@@ -40,7 +40,7 @@ class Library():
         else:
             print("Not found.")
         return books
-    def search(self):
+    def search2(self):
         books=[]
         while True:
             #take a list of action from input
@@ -66,6 +66,54 @@ class Library():
         else:
             print("Not found.")
         return books
+    
+    def search3(self):
+        books = []
+        options = []
+        print("Enter what you want to find (press enter to skip):")
+        options.append(input("Enter title which you want to find: "))
+        options.append(input("Enter author which you want to find: "))
+        while True:
+            try:
+                option=(input("Enter year which you want to find: "))
+                if option != "":
+                    if not int(option):
+                        raise ValueError
+            except ValueError as ve:
+                print(f"Enter correct year.")
+            else:
+                options.append("" if option == "" else int(option))
+                break
+        for id,book in self.books.items():
+            match=[]
+            if options[0]:
+                if options[0].lower() in book.title.lower():
+                    match.append(True)
+                else:
+                    continue
+                    match.append(False)
+            if options[1]:
+                if options[1].lower() in book.author.lower():
+                    match.append(True)
+                else:
+                    continue
+                    match.append(False)
+            if options[2]:
+                if options[2] == book.year:
+                    match.append(True)
+                else:
+                    continue
+                    match.append(False)
+            books.append(id)
+        print(books)
+
+        # if books:
+        #     print("Found:")
+        #     for id in books:
+        #         print(f"{id}. {self.books[id].desc()}")
+        # else:
+        #     print("Not found.")
+        # return books
     
     def find(self,books,option):
         books = books if books else self.books # to jest lista a drugie dictionary 

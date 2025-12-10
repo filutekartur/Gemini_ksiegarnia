@@ -78,8 +78,8 @@ class Library():
         if books:
             while True:
                 try:
-                    choice = int(input("Which book do you mean, pick number? "))
-                    if choice <1 or choice > len(books):
+                    choice = input("Which book do you mean, pick number? ")
+                    if choice not in books:
                         raise ValueError
                 except ValueError:
                     print("Pick correct number!")
@@ -88,10 +88,10 @@ class Library():
             while True:
                 action = input("what do you want to do?\nB = Borrow\nR = Return\n")
                 if action == "B":
-                    self.borrow_book(books[choice-1])
+                    self.borrow_book(choice)
                     break
                 elif action == "R":
-                    self.return_book(books[choice-1])
+                    self.return_book(choice)
                     break
                 else:
                     print("Wrong action!")
